@@ -5,15 +5,18 @@ The perceptron branch predictor implemented in Simplescalar. Performance analyze
 
 Programming Assignment 2 Report (ECE 6100)
 Shubhojit Chattopadhyay
-GTID: 902694799
 email: ssc3@gatech.edu
+
 DYNAMIC BRANCH PREDICTORS
+
 The aim of this assignment was to study and implement several dynamic branch predictors using
 simplescalar. Sim-outorder is a performance simulator that was used for the implementation of these
 branch predictors. The simulation was run on SPEC2000 benchmark programs for 200 million
 instructions each. For each predictor, the effect of misprediction was studied by keeping the maximum
 branch misprediction penalty 3 and 9.
+
 The implementation for each predictor is as follows:
+
 1) Two-bit Counter (Bimodal): The default.2bc.cfg file was configured to 'bimod' representing a
 table size of 16384 entries.
 2) G-share: The default.2bc.cfg file was configured to '2lev' where l1size = 1, l2size = 4096,
@@ -38,8 +41,10 @@ branch taken or not taken. Finally, the bpred_update function was used to monito
 outcome of the branch and give it a return address or branch target address. Here, the training
 and update of weights for perceptron was performed based on whether the branch took the same
 direction as predicted outcome or not.
+
 Note: The configuration files mapped to the sim-outorder.c file to change the values of simulator
 configuration options.Observations:
+
 1) The IPC values in general are highest in the case of gshare and hybrid.
 2) IPC values for perceptron are the least most of the times. This suggests that the use of
 perceptron might lead to a reduction in the number of instructions executed per cycle.
@@ -64,6 +69,7 @@ evel branch predictors. Another weakness is their inability to learn linearly in
 might explain the drop in direction prediction rate as compared to bimod, g-share and hybrid
 predictors. It can also be observed that longer history lengths has better prediction than lower history
 lengths and that increasing the misprediction penalty causes a drop in IPC.
+
 References:
 [1] Daniel A. Jiminez and Calvin Lin, Dynamic Branch Prediction with Perceptrons, Department of
 Computer Sciences, The University of Texas at Austin.
